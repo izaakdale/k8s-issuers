@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: http-mtls-service
+spec:
+  selector:
+    app: http-mtls
+  ports:
+  - port: 443
+    targetPort: 443

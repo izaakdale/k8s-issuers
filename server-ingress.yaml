@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: http-mtls-ingress
+  labels:
+    name: http-mtls-ingress
+spec:
+  rules:
+  - host: test.tester
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: http-mtls-service
+            port: 
+              number: 443

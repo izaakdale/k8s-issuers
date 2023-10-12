@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  # - namespace.yaml
+  - bootstrap-issuer.yaml
+  - root-cert.yaml
+  - root-issuer.yaml
+  - server-cert.yaml
+  # - password.yaml
+  - client-cert.yaml
+  # - server-deployment.yaml
+  # - server-service.yaml
+  # - java-opts-secret.yaml
+  # - client-deployment.yaml
+  # - client-service.yaml

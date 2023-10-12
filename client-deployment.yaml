@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http-mtls-client
+spec:
+  selector:
+    matchLabels:
+      app: http-mtls-client
+  template:
+    metadata:
+      labels:
+        app: http-mtls-client
+    spec:
+      volumes:
+        - name: client-certs
+          secret:
+            secretName: client-certificate
+        - name: root-certs
+          secret:
+            secretName: root-certificate
+      containers:
+      - name: http-mtls-client
+        image: http-mtls-client
+        imagePullPolicy: Never
+        volumeMounts:
+          - mountPath: /client-certs
+            name: client-certs
+          - mountPath: /root-certs
+            name: root-certs
+        env:
+          - name: SERVER_ADDR
+            value: https://http-mtls-service
+          - name: CLIENT_CRT
+            value: "/client-certs/tls.crt"
+          - name: CLIENT_KEY
+            value: "/client-certs/tls.key"
+          - name: ROOT_CA
+            value: /root-certs/ca.crt
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"

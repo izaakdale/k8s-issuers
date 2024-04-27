@@ -6,5 +6,5 @@ spec:
   selector:
     app: http-mtls
   ports:
-  - port: 443
-    targetPort: 443
+    - port: 443
+      targetPort: 443

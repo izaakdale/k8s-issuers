@@ -2,14 +2,14 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: client-certificate
-  namespace: default
+  namespace: apps
 spec:
   secretName: client-certificate
   privateKey:
     algorithm: RSA
     encoding: PKCS8
     size: 4096
-  commonName: "http mtls demo"
+  commonName: 'http mtls demo'
   usages:
     - client auth
     - key encipherment

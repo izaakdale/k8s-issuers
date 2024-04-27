@@ -16,24 +16,24 @@ spec:
           secret:
             secretName: server-certificate
       containers:
-      - name: http-mtls
-        image: http-mtls
-        imagePullPolicy: Never
-        volumeMounts:
-          - mountPath: /certs
-            name: certs
-        env:
-          - name: PORT
-            value: "443"
-          - name: ENABLE_TLS
-            value: "true"
-          - name: SERVER_CRT
-            value: "/certs/tls.crt"
-          - name: SERVER_KEY
-            value: "/certs/tls.key"
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 443
+        - name: http-mtls
+          image: izaakdale/http-mtls
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /certs
+              name: certs
+          env:
+            - name: PORT
+              value: '443'
+            - name: ENABLE_TLS
+              value: 'true'
+            - name: SERVER_CRT
+              value: '/certs/tls.crt'
+            - name: SERVER_KEY
+              value: '/certs/tls.key'
+          resources:
+            limits:
+              memory: '128Mi'
+              cpu: '500m'
+          ports:
+            - containerPort: 443

@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: root-certificate
-  namespace: cert-manager
+  namespace: apps
 spec:
   isCA: true
   secretName: root-certificate
@@ -13,4 +13,4 @@ spec:
     encoding: PKCS8
   issuerRef:
     name: bootstrap-issuer
-    kind: Issuer
+    kind: ClusterIssuer

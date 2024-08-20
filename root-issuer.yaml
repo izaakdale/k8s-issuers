@@ -1,8 +1,8 @@
 apiVersion: cert-manager.io/v1
-kind: Issuer
+kind: ClusterIssuer
 metadata:
   name: root-issuer
-  namespace: cert-manager
+  namespace: apps
 spec:
   ca:
     secretName: root-certificate

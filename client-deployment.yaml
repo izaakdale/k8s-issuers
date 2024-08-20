@@ -21,7 +21,7 @@ spec:
       containers:
         - name: http-mtls-client
           image: izaakdale/http-mtls-client
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           volumeMounts:
             - mountPath: /client-certs
               name: client-certs
